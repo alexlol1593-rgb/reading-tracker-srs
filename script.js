@@ -63,6 +63,40 @@ function addBook(title, author, totalPages) {
     return true;
 }
 
+function statusClass(status) {
+    if (status === 'Читаю') return 'reading';
+    if (status === 'Прочитано') return 'done';
+    if (status === 'Брошено') return 'dropped';
+    return 'planned';
+}
+
+function changeStatus(id, status) {
+    const book = books.find(b => b.id === id);
+    if (!book) return;
+    book.status = status;
+    if (status === 'Прочитано') book.currentPage = book.totalPages;
+    saveBooks();
+    renderBooks();
+}
+
+function progressPercent(book) {
+    return Math.round((book.currentPage / book.totalPages) * 100);
+}
+
+function updateProgress(id, value) {
+    const book = books.find(b => b.id === id);
+    if (!book) return;
+    const page = Number(value);
+    if (!Number.isInteger(page) || page < 0 || page > book.totalPages) {
+        showMessage('Страница должна быть целым числом от 0 до ' + book.totalPages + '.', 'error');
+        renderBooks();
+        return;
+    }
+    book.currentPage = page;
+    saveBooks();
+    renderBooks();
+}
+
 function deleteBook(id) {
     if (!confirm('Удалить эту книгу из списка?')) return;
     books = books.filter(b => b.id !== id);
@@ -81,9 +115,21 @@ function renderBooks() {
             <h3>${escapeHtml(book.title)}</h3>
             <p class="author">${escapeHtml(book.author)} · ${book.totalPages} стр.</p>
             <div class="book-meta">
-                <span class="status-badge">${book.status}</span>
+                <span class="status-badge ${statusClass(book.status)}">${book.status}</span>
+                <select onchange="changeStatus(${book.id}, this.value)">
+                    ${STATUSES.map(s => `<option value="${s}" ${s === book.status ? 'selected' : ''}>${s}</option>`).join('')}
+                </select>
                 <button class="delete-btn" onclick="deleteBook(${book.id})">Удалить</button>
             </div>
+            ${book.status === 'Читаю' ? `
+            <div class="progress-section">
+                <label>Текущая страница:
+                    <input type="number" min="0" max="${book.totalPages}" value="${book.currentPage}"
+                        onchange="updateProgress(${book.id}, this.value)"> из ${book.totalPages}
+                </label>
+                <div class="progress-bar"><div class="progress-fill" style="width:${progressPercent(book)}%"></div></div>
+                <span class="progress-text">${progressPercent(book)}% · осталось ${book.totalPages - book.currentPage} стр.</span>
+            </div>` : ''}
         </div>
     `).join('');
 }
