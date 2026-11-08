@@ -97,6 +97,27 @@ function updateProgress(id, value) {
     renderBooks();
 }
 
+function saveReview(id) {
+    const book = books.find(b => b.id === id);
+    if (!book) return;
+    const text = document.getElementById('review-' + id).value.trim();
+    const ratingVal = document.getElementById('rating-' + id).value;
+    book.review = text;
+    book.rating = ratingVal ? Number(ratingVal) : null;
+    saveBooks();
+    renderBooks();
+    showMessage('Рецензия сохранена.', 'success');
+}
+
+function deleteReview(id) {
+    const book = books.find(b => b.id === id);
+    if (!book) return;
+    book.review = '';
+    book.rating = null;
+    saveBooks();
+    renderBooks();
+}
+
 function deleteBook(id) {
     if (!confirm('Удалить эту книгу из списка?')) return;
     books = books.filter(b => b.id !== id);
@@ -130,6 +151,26 @@ function renderBooks() {
                 <div class="progress-bar"><div class="progress-fill" style="width:${progressPercent(book)}%"></div></div>
                 <span class="progress-text">${progressPercent(book)}% · осталось ${book.totalPages - book.currentPage} стр.</span>
             </div>` : ''}
+            <details class="book-details">
+                <summary>Подробнее / рецензия</summary>
+                <div class="review-section">
+                    ${book.review ? `
+                    <div class="review-display">
+                        <strong>Рецензия:</strong>
+                        <p>${escapeHtml(book.review)}</p>
+                        ${book.rating ? `<span class="rating">Оценка: ${book.rating}/5</span>` : ''}
+                        <button class="delete-btn" onclick="deleteReview(${book.id})">Удалить рецензию</button>
+                    </div>` : ''}
+                    <textarea id="review-${book.id}" placeholder="Ваша рецензия...">${escapeHtml(book.review)}</textarea>
+                    <label>Оценка:
+                        <select id="rating-${book.id}">
+                            <option value="">Без оценки</option>
+                            ${[1, 2, 3, 4, 5].map(n => `<option value="${n}" ${book.rating === n ? 'selected' : ''}>${n}</option>`).join('')}
+                        </select>
+                    </label>
+                    <button onclick="saveReview(${book.id})">Сохранить рецензию</button>
+                </div>
+            </details>
         </div>
     `).join('');
 }
