@@ -56,3 +56,18 @@ button:hover { background: #005fa3; }
 .status-badge.reading { background: #e3f2fd; color: #1565c0; }
 .status-badge.done { background: #e8f5e9; color: #2e7d32; }
 .status-badge.dropped { background: #fbe9e7; color: #d84315; }
+.book-details { margin-top: 10px; }
+.book-details summary { cursor: pointer; color: #007acc; font-size: 14px; }
+.review-section { margin-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+.review-section textarea {
+    width: 100%;
+    min-height: 70px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+    resize: vertical;
+}
+.review-display { background: #f7f7f7; padding: 10px; border-radius: 6px; }
+.review-display p { margin: 6px 0; }
+.rating { display: inline-block; margin-right: 10px; font-weight: bold; color: #f9a825; }
