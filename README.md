@@ -41,3 +41,10 @@
 ## Вариант
 
 №7 — Трекер чтения: список книг к прочтению, отслеживание прогресса по текущей книге, рецензии.
+
+<!-- LAB2-PLAN-LINKS:START -->
+## План проекта (лабораторная работа №2)
+
+- [План проекта в Wiki](https://github.com/alexlol1593-rgb/reading-tracker-srs/wiki/%D0%9F%D0%BB%D0%B0%D0%BD-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0)
+- [Диаграмма Ганта (GitHub Project)](https://github.com/users/alexlol1593-rgb/projects/1/views/2)
+<!-- LAB2-PLAN-LINKS:END -->
