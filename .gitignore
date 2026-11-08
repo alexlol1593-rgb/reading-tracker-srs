@@ -1,0 +1,11 @@
+# Зависимости
+node_modules/
+
+# Логи
+*.log
+
+# Файлы редакторов и ОС
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
