@@ -59,3 +59,15 @@
 - [Процесс разработки (Wiki)](https://github.com/alexlol1593-rgb/reading-tracker-srs/wiki/Процесс-разработки)
 - [Pull Requests](https://github.com/alexlol1593-rgb/reading-tracker-srs/pulls?q=is%3Apr+is%3Aclosed)
 <!-- LAB3-APP-LINKS:END -->
+
+<!-- LAB4-DB:START -->
+## База данных (лабораторная работа №4)
+
+Спроектирована нормализованная схема БД до 3NF для SQLite.
+
+- [ER-диаграмма (PNG)](docs/database/er_diagram.png) / [SVG](docs/database/er_diagram.svg)
+- [DDL-схема](database/schema.sql)
+- [Тестовые данные](database/seed_data.sql)
+- [Процесс нормализации](database/normalization.md)
+- [Wiki: normalization](https://github.com/alexlol1593-rgb/reading-tracker-srs/wiki/normalization)
+<!-- LAB4-DB:END -->
