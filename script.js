@@ -125,13 +125,35 @@ function deleteBook(id) {
     renderBooks();
 }
 
+function getVisibleBooks() {
+    const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+    const filter = document.getElementById('filterSelect').value;
+    const sort = document.getElementById('sortSelect').value;
+    const result = books.filter(b => {
+        const matchesQuery = !q || b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q);
+        const matchesFilter = !filter || b.status === filter;
+        return matchesQuery && matchesFilter;
+    });
+    result.sort((a, b) => {
+        if (sort === 'author') return a.author.localeCompare(b.author, 'ru');
+        if (sort === 'progress') return progressPercent(b) - progressPercent(a);
+        return a.title.localeCompare(b.title, 'ru');
+    });
+    return result;
+}
+
 function renderBooks() {
     const list = document.getElementById('bookList');
     if (books.length === 0) {
         list.innerHTML = '<p class="empty">Список пуст. Добавьте первую книгу!</p>';
         return;
     }
-    list.innerHTML = books.map(book => `
+    const visible = getVisibleBooks();
+    if (visible.length === 0) {
+        list.innerHTML = '<p class="empty">Ничего не найдено. Измените запрос или фильтр.</p>';
+        return;
+    }
+    list.innerHTML = visible.map(book => `
         <div class="book-card" data-id="${book.id}">
             <h3>${escapeHtml(book.title)}</h3>
             <p class="author">${escapeHtml(book.author)} · ${book.totalPages} стр.</p>
@@ -186,3 +208,7 @@ document.getElementById('bookForm').addEventListener('submit', function (e) {
 });
 
 renderBooks();
+
+document.getElementById('searchInput').addEventListener('input', renderBooks);
+document.getElementById('filterSelect').addEventListener('change', renderBooks);
+document.getElementById('sortSelect').addEventListener('change', renderBooks);

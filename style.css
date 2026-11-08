@@ -71,3 +71,6 @@ button:hover { background: #005fa3; }
 .review-display { background: #f7f7f7; padding: 10px; border-radius: 6px; }
 .review-display p { margin: 6px 0; }
 .rating { display: inline-block; margin-right: 10px; font-weight: bold; color: #f9a825; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.toolbar input { flex: 1 1 200px; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+.toolbar select { padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
