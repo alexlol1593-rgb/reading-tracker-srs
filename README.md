@@ -48,3 +48,14 @@
 - [План проекта в Wiki](https://github.com/alexlol1593-rgb/reading-tracker-srs/wiki/%D0%9F%D0%BB%D0%B0%D0%BD-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0)
 - [Диаграмма Ганта (GitHub Project)](https://github.com/users/alexlol1593-rgb/projects/1/views/2)
 <!-- LAB2-PLAN-LINKS:END -->
+
+<!-- LAB3-APP-LINKS:START -->
+## Приложение (лабораторная работа №3)
+
+Прототип реализован на HTML/CSS/JS. Запуск: откройте `index.html` в браузере.
+
+- Исходный код: `index.html`, `style.css`, `script.js`
+- [Релиз v1.0.0](https://github.com/alexlol1593-rgb/reading-tracker-srs/releases/tag/v1.0.0)
+- [Процесс разработки (Wiki)](https://github.com/alexlol1593-rgb/reading-tracker-srs/wiki/Процесс-разработки)
+- [Pull Requests](https://github.com/alexlol1593-rgb/reading-tracker-srs/pulls?q=is%3Apr+is%3Aclosed)
+<!-- LAB3-APP-LINKS:END -->
