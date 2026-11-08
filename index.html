@@ -10,8 +10,17 @@
     <div class="container">
         <h1>📚 Трекер чтения</h1>
         <p class="subtitle">Список книг, прогресс чтения и рецензии</p>
-        <!-- Форма добавления книги и список будут реализованы в feature-ветках -->
-        <div id="bookList"></div>
+
+        <div id="message" class="message" hidden></div>
+
+        <form id="bookForm" class="book-form">
+            <input type="text" id="titleInput" placeholder="Название книги" required>
+            <input type="text" id="authorInput" placeholder="Автор" required>
+            <input type="number" id="pagesInput" placeholder="Кол-во страниц" min="1" required>
+            <button type="submit">Добавить книгу</button>
+        </form>
+
+        <div id="bookList" class="book-list"></div>
     </div>
     <script src="script.js"></script>
 </body>
