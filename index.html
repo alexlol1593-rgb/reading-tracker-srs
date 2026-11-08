@@ -20,6 +20,22 @@
             <button type="submit">Добавить книгу</button>
         </form>
 
+        <div class="toolbar">
+            <input type="text" id="searchInput" placeholder="Поиск по названию или автору...">
+            <select id="filterSelect">
+                <option value="">Все статусы</option>
+                <option value="Запланировано">Запланировано</option>
+                <option value="Читаю">Читаю</option>
+                <option value="Прочитано">Прочитано</option>
+                <option value="Брошено">Брошено</option>
+            </select>
+            <select id="sortSelect">
+                <option value="title">По названию</option>
+                <option value="author">По автору</option>
+                <option value="progress">По прогрессу</option>
+            </select>
+        </div>
+
         <div id="bookList" class="book-list"></div>
     </div>
     <script src="script.js"></script>
